@@ -2,7 +2,8 @@
 #include "train.h"
 
 void Train::addCar(bool light) {
-  Car* newCar = new Car(light);
+  Car* newCar = new Car;
+  newCar->light = light;
   if (!first) {
     first = newCar;
     first->next = first;
@@ -49,6 +50,6 @@ int Train::getLength() {
   }
   return length;
 }
-void Train::getOpCount() {
+int Train::getOpCount() {
   return countOp;
 }
