@@ -17,19 +17,35 @@ void Train::addCar(bool light) {
   }
 }
 int Train::getLength() {
-  if (!first) {
-    return 0;
-  }
+  if (!first) return 0;
   countOp = 0;
-  int length = 1;
   Car* Current = first;
-  while (true) {
-    Current = Current->next;
-    countOp++;
-    if (Current == first) {
-      break;
+  if (!Current->light) {
+    Current->light = true;
+  }
+  int length = 0;
+  bool found = false;
+  while (!found) {
+    while (true) {
+      Current = Current->next;
+      countOp++;
+      length++;
+      if (current->light) {
+        current->light= false;
+        break;
+      }
     }
-    length++;
+    int steps = 0;
+    while (steps < length) {
+      current = current->prev;
+      countOp++;
+      steps++;
+    }
+    if (!current->light) {
+      found = true;
+    } else {
+      length = 0;
+    }
   }
   return length;
 }
