@@ -30,18 +30,18 @@ int Train::getLength() {
       Current = Current->next;
       countOp++;
       length++;
-      if (current->light) {
-        current->light= false;
+      if (Current->light) {
+        Current->light= false;
         break;
       }
     }
     int steps = 0;
     while (steps < length) {
-      current = current->prev;
+      Current = Current->prev;
       countOp++;
       steps++;
     }
-    if (!current->light) {
+    if (!Current->light) {
       found = true;
     } else {
       length = 0;
